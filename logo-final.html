@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    function generateLogo() {
+      const canvas = document.getElementById('logo');
+      const ctx = canvas.getContext('2d');
+      const w = 400, h = 180;
+      canvas.width = w;
+      canvas.height = h;
+
+      ctx.clearRect(0, 0, w, h);
+
+      const cx = w / 2;
+      const color = '#1e3a8a';
+
+      // "HA" text
+      ctx.font = '800 64px Raleway, sans-serif';
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('HA', cx, 60);
+
+      // Main swoosh
+      ctx.beginPath();
+      ctx.moveTo(cx - 80, 95);
+      ctx.quadraticCurveTo(cx, 120, cx + 80, 85);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 4.5;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      // Secondary swoosh (lighter)
+      ctx.beginPath();
+      ctx.moveTo(cx - 70, 105);
+      ctx.quadraticCurveTo(cx, 128, cx + 85, 93);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2.5;
+      ctx.globalAlpha = 0.4;
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      // "HADITHI AHLIA" text below
+      ctx.font = '600 20px Raleway, sans-serif';
+      ctx.fillStyle = color;
+      ctx.textAlign = 'center';
+      ctx.letterSpacing = '5px';
+      ctx.fillText('HADITHI  AHLIA', cx, 155);
+
+      // Set download link
+      const link = document.getElementById('download');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'logo.png';
+      link.style.display = 'inline-block';
+    }
+
+    // Wait for font to load
+    document.fonts.ready.then(generateLogo);
+  </script>
+  <style>
+    body { background: #f5f5f5; display: flex; flex-direction: column; align-items: center; padding: 50px; font-family: Arial, sans-serif; }
+    canvas { background: white; border: 1px solid #e5e7eb; border-radius: 12px; margin: 20px 0; }
+    #download { padding: 14px 28px; background: #1e3a8a; color: white; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: 600; }
+    #download:hover { background: #1e40af; }
+    .note { color: #6b7280; margin-top: 20px; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <h2 style="color:#1e3a8a;">Final Logo — Swoosh + Raleway</h2>
+  <canvas id="logo"></canvas>
+  <a id="download" style="display:none;">Download Logo PNG</a>
+  <p class="note">Download this file, then I'll update the app automatically.</p>
+</body>
+</html>
