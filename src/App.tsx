@@ -54,7 +54,7 @@ function App() {
       {/* Header */}
       <header className="flex items-center justify-between px-4 py-3 bg-blue-700 text-white sticky top-0 z-10">
         <h1 className="text-lg font-bold">{t(lang, 'appTitle')}</h1>
-        <img src={logo} alt="Logo" className="h-10 bg-white rounded-md px-2 py-1" />
+        <img src={logo} alt="Logo" className="h-14 bg-white rounded-lg px-3 py-1.5" />
         <button
           onClick={toggleLang}
           className="no-print text-sm bg-blue-800 px-3 py-1 rounded-md hover:bg-blue-900 transition-colors"
