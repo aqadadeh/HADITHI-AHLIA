@@ -4,15 +4,23 @@ import type { PaymentData } from './types';
 import { PaymentForm } from './components/PaymentForm';
 import { SignaturePad } from './components/SignaturePad';
 import { Confirmation } from './components/Confirmation';
+import { PinScreen } from './components/PinScreen';
 import logo from './assets/logo.png';
 
 type Step = 'form' | 'signature' | 'done';
 
 function App() {
+  const [authenticated, setAuthenticated] = useState(
+    () => sessionStorage.getItem('authenticated') === '1'
+  );
   const [lang, setLang] = useState<Language>('en');
   const [step, setStep] = useState<Step>('form');
   const [formData, setFormData] = useState<Omit<PaymentData, 'signature'> | null>(null);
   const [paymentData, setPaymentData] = useState<PaymentData | null>(null);
+
+  if (!authenticated) {
+    return <PinScreen onAuthenticated={() => setAuthenticated(true)} />;
+  }
 
   const dir = lang === 'ar' ? 'rtl' : 'ltr';
 
