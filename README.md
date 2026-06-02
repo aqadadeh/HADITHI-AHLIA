@@ -1,73 +1,42 @@
-# React + TypeScript + Vite
+# HADITHI AHLIA - Payment Receipt App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Deployment (GitHub Pages)
 
-Currently, two official plugins are available:
+### Step 1: Create a GitHub repo
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+1. Go to [github.com/new](https://github.com/new)
+2. Name it `PaymentPri` (or anything you like)
+3. Keep it **Public** (required for free GitHub Pages)
+4. **Don't** add README or .gitignore (we already have them)
+5. Click "Create repository"
 
-## React Compiler
+### Step 2: Push your code (copy the commands GitHub shows you, it'll look like):
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```powershell
+git remote add origin https://github.com/YOUR_USERNAME/YOUR_REPO.git
+git branch -M main
+git push -u origin main
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Step 3: Enable GitHub Pages
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+1. Go to your repo → **Settings** → **Pages**
+2. Under "Source", select **Deploy from a branch**
+3. Branch: `main`, Folder: `/docs`
+4. Click **Save**
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Step 4: Share the link
+
+After ~1 minute, your app will be live at:
+`https://YOUR_USERNAME.github.io/PaymentPri/`
+
+Share that URL with anyone — they just open it in their phone browser, no install needed!
+
+### For future updates, just run:
+
+```powershell
+npm run deploy
+git add docs
+git commit -m "Update app"
+git push
 ```
