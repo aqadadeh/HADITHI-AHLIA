@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800&display=swap" rel="stylesheet">
+  <script>
+    function generateLogo() {
+      const canvas = document.getElementById('logo');
+      const ctx = canvas.getContext('2d');
+      const w = 500, h = 120;
+      canvas.width = w;
+      canvas.height = h;
+
+      ctx.clearRect(0, 0, w, h);
+
+      const color = '#1e3a8a';
+
+      // "HA" on the left
+      ctx.font = '800 52px Raleway, sans-serif';
+      ctx.fillStyle = color;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('HA', 20, 50);
+
+      // Swoosh under HA
+      ctx.beginPath();
+      ctx.moveTo(18, 78);
+      ctx.quadraticCurveTo(55, 98, 95, 72);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 3.5;
+      ctx.lineCap = 'round';
+      ctx.stroke();
+
+      // Secondary swoosh
+      ctx.beginPath();
+      ctx.moveTo(22, 86);
+      ctx.quadraticCurveTo(58, 104, 100, 80);
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.35;
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      // Vertical divider line
+      ctx.beginPath();
+      ctx.moveTo(115, 20);
+      ctx.lineTo(115, 100);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 1.5;
+      ctx.globalAlpha = 0.3;
+      ctx.stroke();
+      ctx.globalAlpha = 1;
+
+      // "HADITHI AHLIA" large text on the right
+      ctx.font = '700 30px Raleway, sans-serif';
+      ctx.fillStyle = color;
+      ctx.textAlign = 'left';
+      ctx.textBaseline = 'middle';
+      ctx.fillText('HADITHI  AHLIA', 135, 55);
+
+      // Set download link
+      const link = document.getElementById('download');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'logo.png';
+      link.style.display = 'inline-block';
+    }
+
+    document.fonts.ready.then(generateLogo);
+  </script>
+  <style>
+    body { background: #f5f5f5; display: flex; flex-direction: column; align-items: center; padding: 50px; font-family: Arial, sans-serif; }
+    canvas { background: white; border: 1px solid #e5e7eb; border-radius: 12px; margin: 20px 0; }
+    #download { padding: 14px 28px; background: #1e3a8a; color: white; text-decoration: none; border-radius: 8px; font-size: 16px; font-weight: 600; }
+    #download:hover { background: #1e40af; }
+  </style>
+</head>
+<body>
+  <h2 style="color:#1e3a8a;">Logo v2 — Wide Format (Readable at any size)</h2>
+  <canvas id="logo"></canvas>
+  <a id="download" style="display:none;">Download Logo PNG</a>
+  <p style="color:#6b7280; margin-top:16px;">Save to: dist-single\logo.png (replace old one)</p>
+</body>
+</html>
