@@ -78,6 +78,7 @@ export function PaymentForm({ lang, onNext }: Props) {
             <option value="AED">AED</option>
             <option value="SAR">SAR</option>
             <option value="JOD">JOD</option>
+            <option value="IQD">IQD</option>
             <option value="ILS">ILS</option>
           </select>
         </div>
